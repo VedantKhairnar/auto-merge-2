@@ -1,2 +1,2 @@
 # auto-merge-2
-Testing 6
+Testing 7
