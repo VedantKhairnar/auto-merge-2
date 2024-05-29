@@ -1,20 +1,19 @@
 name: Label All PRs
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
 
 jobs:
   label-all-prs:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      pull-requests: write  # Ensure this permission is set to allow labeling
-
     steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
     - name: Add 'awesome' label to all PRs
       uses: actions-ecosystem/action-add-labels@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         labels: 'awesome'
